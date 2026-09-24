@@ -8,7 +8,7 @@
     <meta property="og:title" content="Murad Hajjaj | Full-Stack & Laravel Developer">
     <meta property="og:description" content="Full-Stack & Laravel Developer building scalable backend systems, RESTful APIs, and reliable web applications.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="{{ asset('Murad1.jpeg') }}">
+    <meta property="og:image" content="{{ asset('Murad3.jpg') }}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -110,7 +110,7 @@
                     </div>
 
                     <img
-                        src="{{ asset('Murad1.jpeg') }}"
+                        src="{{ asset('Murad3.jpg') }}"
                         alt="Murad Hajjaj, Full-Stack and Laravel Developer"
                         loading="lazy"
                         class="w-full h-[28rem] object-cover rounded-xl"
