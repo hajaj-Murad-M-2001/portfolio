@@ -9,7 +9,7 @@
     <meta property="og:description" content="Full-Stack & Laravel Developer building scalable backend systems, RESTful APIs, and reliable web applications.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ asset('Murad3.jpg') }}">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Murad💻</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
 
     <script>
         // Persist dark mode and respect the visitor's system preference on first load.
@@ -34,13 +34,16 @@
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         .theme-toggle { transition: transform .2s ease, background-color .25s ease, color .25s ease; }
         .theme-toggle:active { transform: scale(.94); }
-        .dark body { background: #0b1220 !important; color: #e5e7eb !important; }
+        
+        /* Dark Mode Global Overrides for Crisp White Text */
+        .dark body { background: #0b1220 !important; color: #f3f4f6 !important; }
+        .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 { color: #ffffff !important; }
+        .dark p, .dark span, .dark li, .dark a { color: #d1d5db; }
         .dark .dark-card { background: #111827 !important; border-color: #243244 !important; }
         .dark .dark-soft { background: #0f172a !important; border-color: #243244 !important; }
-        .dark .dark-text { color: #e5e7eb !important; }
+        .dark .dark-text { color: #ffffff !important; }
         .dark .dark-muted { color: #94a3b8 !important; }
-        .dark .dark-nav { background: rgba(17,24,39,.88) !important; border-color: #334155 !important; }
-        .dark input, .dark textarea { color: #e5e7eb !important; }
+        .dark input, .dark textarea { color: #ffffff !important; background: #1e293b !important; border-color: #334155 !important; }
         .dark input::placeholder, .dark textarea::placeholder { color: #64748b !important; }
         [x-cloak] { display: none !important; }
     </style>
@@ -55,16 +58,16 @@
     <!-- Header -->
     <header class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
         <div class="flex items-center gap-3">
-            <a href="mailto:muradmohhajaj@gmail.com" class="w-10 h-10 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-sm border border-slate-200 rounded-xl flex items-center justify-center hover:scale-105 transition-transform text-slate-700" title="Email" aria-label="Email Murad Hajjaj">
+            <a href="mailto:muradmohhajaj@gmail.com" class="w-10 h-10 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-sm border border-slate-200 rounded-xl flex items-center justify-center hover:scale-105 transition-transform text-slate-700 dark:text-slate-200" title="Email" aria-label="Email Murad Hajjaj">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             </a>
-            <a href="https://www.youtube.com/@muradmhajjaj6511" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-sm border border-slate-200 rounded-xl flex items-center justify-center hover:scale-105 transition-transform text-slate-700" title="YouTube" aria-label="Murad's YouTube Channel">
+            <a href="https://www.youtube.com/@muradmhajjaj6511" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-sm border border-slate-200 rounded-xl flex items-center justify-center hover:scale-105 transition-transform text-slate-700 dark:text-slate-200" title="YouTube" aria-label="Murad's YouTube Channel">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
             </a>
-            <a href="https://github.com/hajaj-Murad-M-2001" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-sm border border-slate-200 rounded-xl flex items-center justify-center hover:scale-105 transition-transform text-slate-700" title="GitHub" aria-label="Murad's GitHub Profile">
+            <a href="https://github.com/hajaj-Murad-M-2001" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-sm border border-slate-200 rounded-xl flex items-center justify-center hover:scale-105 transition-transform text-slate-700 dark:text-slate-200" title="GitHub" aria-label="Murad's GitHub Profile">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
             </a>
-            <a href="https://mostaql.com/u/MuradMh/portfolio" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-sm border border-slate-200 rounded-xl flex items-center justify-center hover:scale-105 transition-transform text-slate-700" title="Mostaql Portfolio" aria-label="Murad's Mostaql Portfolio">
+            <a href="https://mostaql.com/u/MuradMh/portfolio" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-sm border border-slate-200 rounded-xl flex items-center justify-center hover:scale-105 transition-transform text-slate-700 dark:text-slate-200" title="Mostaql Portfolio" aria-label="Murad's Mostaql Portfolio">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             </a>
         </div>
@@ -75,6 +78,7 @@
                 Available for new projects
             </div>
 
+            <!-- زر تبديل الدارك مود -->
             <button
                 type="button"
                 x-data="{ dark: document.documentElement.classList.contains('dark') }"
@@ -95,20 +99,20 @@
 
     <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-4 sm:pt-6 pb-10 space-y-14 sm:space-y-20">
 
-        <!-- Hero -->
+        <!-- Hero Section -->
         <section id="home" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-7 space-y-6 relative">
                 <span class="font-casual text-[#4F5BFF] text-2xl sm:text-3xl block -mb-5 sm:-mb-6 rotate-[-3deg]">This is</span>
 
-                <h1 class="font-heading text-5xl sm:text-6xl md:text-8xl uppercase tracking-tight leading-none">
-                    <span class="text-[#0F1115] dark:text-white">MURAD</span><br>
-                    <span class="text-[#0F1115] dark:text-white">HAJJAJ</span>
+                <h1 class="font-heading text-5xl sm:text-6xl md:text-8xl uppercase tracking-tight leading-none text-slate-900 dark:text-white">
+                    <span>MURAD</span><br>
+                    <span>HAJJAJ</span>
                 </h1>
 
                 <div class="space-y-2 pt-2">
                     <div class="flex items-center gap-3">
                         <span class="font-casual text-[#4F5BFF] text-3xl rotate-[2deg]">
-                            Backend Developer &rarr;
+                            Full-Stack & Laravel Developer &rarr;
                         </span>
                     </div>
 
@@ -118,13 +122,13 @@
                 </div>
 
                 <div class="flex flex-wrap items-center gap-4 pt-4">
-                    <div class="bg-white dark:bg-slate-900 px-4 py-2 rounded-full shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 text-sm font-semibold">
+                    <div class="bg-white dark:bg-slate-900 dark:border-slate-700 px-4 py-2 rounded-full shadow-sm border border-slate-200 flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-200">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true"></span>
                         Open to work
                     </div>
 
                     <div
-                        class="bg-white dark:bg-slate-900 px-4 py-2 rounded-full shadow-sm border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2"
+                        class="bg-white dark:bg-slate-900 dark:border-slate-700 px-4 py-2 rounded-full shadow-sm border border-slate-200 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2"
                         x-data="{ time: '' }"
                         x-init="time = new Date().toLocaleTimeString(); setInterval(() => time = new Date().toLocaleTimeString(), 1000)"
                     >
@@ -144,7 +148,7 @@
             <!-- Profile image -->
             <div class="lg:col-span-5 flex justify-center relative">
                 <div class="bg-white dark:bg-slate-900 p-4 pb-12 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 rotate-[1.5deg] hover:rotate-0 transition-transform duration-300 max-w-sm w-full relative">
-                    <div class="absolute -top-6 -left-6 w-16 h-16 bg-white/85 dark:bg-slate-800/90 backdrop-blur border border-slate-200 rounded-2xl shadow-md p-2 flex items-center justify-center text-xs font-bold text-slate-400">
+                    <div class="absolute -top-6 -left-6 w-16 h-16 bg-white/85 dark:bg-slate-800/90 backdrop-blur border border-slate-200 dark:border-slate-700 rounded-2xl shadow-md p-2 flex items-center justify-center text-xs font-bold text-slate-500 dark:text-slate-300">
                         4.0
                     </div>
 
@@ -155,27 +159,24 @@
                         class="w-full h-[28rem] object-cover rounded-xl"
                     >
 
-                    <div class="absolute bottom-4 left-6 text-slate-600 font-casual text-2xl">
+                    <div class="absolute bottom-4 left-6 text-slate-700 dark:text-slate-200 font-casual text-2xl">
                         Murad Hajjaj
                     </div>
                 </div>
             </div>
         </section>
 
-
-        <!-- Projects note: project cards and tag-filter empty states live on the dedicated projects view (route('projects')).
-             This page intentionally links to that view instead of rendering a fake "No projects tagged yet" state. -->
         <!-- Stats -->
         <section class="grid grid-cols-1 sm:grid-cols-[1.4fr_1fr] gap-4">
             <div class="bg-[#4F5BFF] rounded-3xl p-8 text-white shadow-lg shadow-[#4F5BFF]/20 flex flex-col justify-center">
-                <span class="text-4xl md:text-5xl font-heading">6+</span>
-                <span class="text-sm text-white/85 mt-2">Major projects shipped</span>
+                <span class="text-4xl md:text-5xl font-heading text-white">6+</span>
+                <span class="text-sm text-white/90 mt-2 font-medium">Major projects shipped</span>
             </div>
 
             <div class="grid grid-cols-2 sm:grid-cols-1 gap-4">
                 <div class="bg-white dark:bg-slate-900 dark:border-slate-700 border border-slate-200 rounded-2xl p-6 shadow-sm">
-                    <span class="text-2xl font-heading text-slate-900">2+</span>
-                    <p class="text-xs text-slate-500 mt-1">Years of hands-on experience</p>
+                    <span class="text-2xl font-heading text-slate-900 dark:text-white">2+</span>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Years of hands-on experience</p>
                 </div>
 
                 <div class="bg-white dark:bg-slate-900 dark:border-slate-700 border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -188,7 +189,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-32 text-center text-slate-400 dark:text-slate-500 text-xs">
+    <footer class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-32 text-center text-slate-500 dark:text-slate-400 text-xs">
         <p>&copy; 2026 Murad Hajjaj. Built with Laravel 12 &amp; Tailwind CSS.</p>
     </footer>
 
@@ -325,10 +326,9 @@
 
             <div>
                 <h3 id="contact-modal-title" class="text-2xl font-black text-slate-900 dark:text-white">Send a Message</h3>
-                <p class="text-xs text-slate-500 mt-1">We typically reply within a few hours.</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">We typically reply within a few hours.</p>
             </div>
 
-            <!-- مكان عرض رسائل النجاح أو الأخطاء الخاصة بالـ API -->
             <template x-if="responseMessage">
                 <div :class="isError ? 'bg-red-50 border-red-200 text-red-700' : 'bg-emerald-50 border-emerald-200 text-emerald-700'" class="border text-xs font-medium p-3.5 rounded-2xl flex items-center gap-2">
                     <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -341,7 +341,7 @@
             <div class="bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl flex items-center gap-1" role="tablist">
                 <button
                     @click="activeTab = 'whatsapp'"
-                    :class="activeTab === 'whatsapp' ? 'bg-white text-slate-900 shadow-sm font-bold' : 'text-slate-500 font-medium'"
+                    :class="activeTab === 'whatsapp' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 font-medium'"
                     class="flex-1 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition-all"
                     role="tab"
                     :aria-selected="activeTab === 'whatsapp'"
@@ -352,7 +352,7 @@
 
                 <button
                     @click="activeTab = 'email'"
-                    :class="activeTab === 'email' ? 'bg-white text-slate-900 shadow-sm font-bold' : 'text-slate-500 font-medium'"
+                    :class="activeTab === 'email' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 font-medium'"
                     class="flex-1 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition-all"
                     role="tab"
                     :aria-selected="activeTab === 'email'"
@@ -364,35 +364,34 @@
 
             <form @submit.prevent="submitForm" class="space-y-4" id="apiContactForm">
                 
-                <!-- حقل Honeypot المخفي لحماية البوتات والسبام -->
                 <input type="text" name="website_url" id="website_url" style="display:none;" autocomplete="off">
 
                 <div>
-                    <label for="cf-name" class="block text-xs font-bold text-slate-700 mb-1">Name *</label>
+                    <label for="cf-name" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Name *</label>
                     <input
                         type="text"
                         name="name"
                         id="cf-name"
                         placeholder="Full Name"
                         required
-                        class="w-full bg-[#F4F5FA] dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl px-4 py-3 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#4F5BFF]"
+                        class="w-full bg-[#F4F5FA] dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl px-4 py-3 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-[#4F5BFF]"
                     >
                 </div>
 
                 <div>
-                    <label for="cf-email" class="block text-xs font-bold text-slate-700 mb-1">Email Address *</label>
+                    <label for="cf-email" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Email Address *</label>
                     <input
                         type="email"
                         name="email"
                         id="cf-email"
                         placeholder="name@example.com"
                         required
-                        class="w-full bg-[#F4F5FA] dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl px-4 py-3 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#4F5BFF]"
+                        class="w-full bg-[#F4F5FA] dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl px-4 py-3 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-[#4F5BFF]"
                     >
                 </div>
 
                 <div>
-                    <label for="cf-phone" class="block text-xs font-bold text-slate-700 mb-1">Phone Number (Optional for WhatsApp)</label>
+                    <label for="cf-phone" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Phone Number (Optional for WhatsApp)</label>
                     <div class="flex items-stretch bg-[#F4F5FA] dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden focus-within:border-[#4F5BFF]">
                         <span class="px-3 flex items-center text-xs font-bold text-slate-500 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 border-l border-slate-200 dark:border-slate-600">
                             +972
@@ -403,20 +402,20 @@
                             name="phone"
                             id="cf-phone"
                             placeholder="59 XXX XXXX"
-                            class="flex-1 bg-transparent px-4 py-3 text-xs text-slate-900 placeholder-slate-400 focus:outline-none"
+                            class="flex-1 bg-transparent px-4 py-3 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none"
                         >
                     </div>
                 </div>
 
                 <div>
-                    <label for="cf-message" class="block text-xs font-bold text-slate-700 mb-1">Message * (Min 10 chars)</label>
+                    <label for="cf-message" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Message * (Min 10 chars)</label>
                     <textarea
                         name="message"
                         id="cf-message"
                         rows="3"
                         placeholder="How can I help you?"
                         required
-                        class="w-full bg-[#F4F5FA] dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl px-4 py-3 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#4F5BFF]"
+                        class="w-full bg-[#F4F5FA] dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl px-4 py-3 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-[#4F5BFF]"
                     ></textarea>
                 </div>
 
@@ -438,7 +437,7 @@
 
                     <button
                         type="submit"
-                        x-show="activeTab === 'email'"
+                        x-show="activeTab: 'email'"
                         :disabled="loading"
                         class="w-full sm:flex-1 bg-[#4F5BFF] hover:bg-[#3d48e0] text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-lg shadow-[#4F5BFF]/25 text-xs flex items-center justify-center gap-2"
                     >
@@ -449,7 +448,7 @@
                     <a
                         href="{{ asset('cv/murad-hajjaj-cv.pdf') }}"
                         download
-                        class="w-full sm:w-auto bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-bold py-3.5 px-6 rounded-2xl transition-all text-xs text-center"
+                        class="w-full sm:w-auto bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold py-3.5 px-6 rounded-2xl transition-all text-xs text-center"
                     >
                         Download CV
                     </a>
