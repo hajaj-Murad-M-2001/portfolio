@@ -135,7 +135,7 @@
         <section class="bg-white dark:bg-slate-900 dark:border dark:border-slate-800 border border-slate-200 p-8 md:p-10 rounded-3xl shadow-sm space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed max-w-4xl mx-auto">
             <h2 class="font-heading text-xl text-slate-900 dark:text-white uppercase tracking-wide">Who Am I?</h2>
             <p class="text-sm md:text-base">
-                I am Murad Hajjaj, a software and computer engineer based in Nablus, specializing in backend systems, RESTful APIs, and full-stack web apps using Laravel, Node.js, and Express.js.
+                I am Murad Hajjaj, a software and computer engineer based in Gazacity, specializing in backend systems, RESTful APIs, and full-stack web apps using Laravel, Node.js, and Express.js.
             </p>
             <p class="text-sm md:text-base">
                 I focus on clean architecture, secure authentication, and database optimization across MySQL, PostgreSQL, and MongoDB.
