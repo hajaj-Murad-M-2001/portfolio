@@ -11,7 +11,6 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
 
     <script>
-        // Persist dark mode and respect the visitor's system preference on first load.
         tailwind = window.tailwind || {};
         tailwind.config = { darkMode: 'class' };
         (() => {
@@ -34,14 +33,9 @@
         .theme-toggle { transition: transform .2s ease, background-color .25s ease, color .25s ease; }
         .theme-toggle:active { transform: scale(.94); }
         
-        /* Dark Mode Global Overrides for Crisp White Text */
         .dark body { background: #0b1220 !important; color: #f3f4f6 !important; }
         .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 { color: #ffffff !important; }
         .dark p, .dark span, .dark li, .dark a { color: #d1d5db; }
-        .dark .dark-card { background: #111827 !important; border-color: #243244 !important; }
-        .dark .dark-soft { background: #0f172a !important; border-color: #243244 !important; }
-        .dark .dark-text { color: #ffffff !important; }
-        .dark .dark-muted { color: #94a3b8 !important; }
         .dark input, .dark textarea { color: #ffffff !important; background: #1e293b !important; border-color: #334155 !important; }
         .dark input::placeholder, .dark textarea::placeholder { color: #64748b !important; }
         [x-cloak] { display: none !important; }
@@ -77,7 +71,7 @@
                 Available for new projects
             </div>
 
-            <!-- زر تبديل الدارك مود -->
+            <!-- Dark Mode Toggle Button -->
             <button
                 type="button"
                 x-data="{ dark: document.documentElement.classList.contains('dark') }"
@@ -121,7 +115,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 max-w-4xl mx-auto">
             <div class="md:col-span-7 bg-[#4F5BFF] text-white p-8 rounded-3xl shadow-lg flex flex-col justify-center relative overflow-hidden">
                 <div class="absolute right-[-20px] bottom-[-20px] text-white/10 font-heading text-9xl pointer-events-none" aria-hidden="true">99%</div>
-                <span class="font-heading text-5xl md:text-6xl tracking-tight mb-1">99%</span>
+                <span class="font-heading text-5xl md:text-6xl tracking-tight mb-1 text-white">99%</span>
                 <span class="text-white/90 text-sm md:text-base font-medium">API Uptime & reliability</span>
             </div>
 
@@ -141,7 +135,7 @@
         <section class="bg-white dark:bg-slate-900 dark:border dark:border-slate-800 border border-slate-200 p-8 md:p-10 rounded-3xl shadow-sm space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed max-w-4xl mx-auto">
             <h2 class="font-heading text-xl text-slate-900 dark:text-white uppercase tracking-wide">Who Am I?</h2>
             <p class="text-sm md:text-base">
-                I am Murad Hajjaj, a software and computer engineer based in GAZA--GAZA...CITY., specializing in backend systems, RESTful APIs, and full-stack web apps using Laravel, Node.js, and Express.js.
+                I am Murad Hajjaj, a software and computer engineer based in Nablus, specializing in backend systems, RESTful APIs, and full-stack web apps using Laravel, Node.js, and Express.js.
             </p>
             <p class="text-sm md:text-base">
                 I focus on clean architecture, secure authentication, and database optimization across MySQL, PostgreSQL, and MongoDB.
@@ -162,7 +156,7 @@
                 </div>
             </div>
             <div class="bg-[#0F1115] dark:bg-slate-900 dark:border dark:border-slate-800 border border-slate-800 p-6 rounded-3xl shadow-lg font-mono text-xs md:text-sm text-slate-300 flex flex-col justify-center overflow-x-auto">
-                <div class="text-slate-500 dark:text-slate-400 mb-3 pb-2 border-b border-slate-800 dark:border-slate-800 flex items-center justify-between">
+                <div class="text-slate-500 mb-3 pb-2 border-b border-slate-800 dark:border-slate-700 flex items-center justify-between">
                     <span>// backend.php</span>
                     <div class="flex gap-1.5" aria-hidden="true">
                         <span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
@@ -196,60 +190,24 @@
 
     <!-- Floating Dock Navigation -->
     <nav class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 bg-white/90 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 px-2.5 sm:px-4 py-2.5 sm:py-3 rounded-full shadow-2xl flex items-center gap-1 sm:gap-4 max-w-[calc(100vw-24px)]" aria-label="Main navigation">
-        <a
-            href="{{ url('/') }}"
-            class="p-2.5 sm:p-3 text-slate-700 dark:text-slate-200 hover:text-[#4F5BFF] hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all"
-            title="Home"
-            aria-label="Go to Home page"
-        >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-            </svg>
+        <a href="{{ url('/') }}" class="p-2.5 sm:p-3 text-slate-700 dark:text-slate-200 hover:text-[#4F5BFF] hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all" title="Home" aria-label="Go to Home page">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
         </a>
 
-        <a
-            href="{{ route('experience') }}"
-            class="p-2.5 sm:p-3 text-slate-700 dark:text-slate-200 hover:text-[#4F5BFF] hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all"
-            title="Experience"
-            aria-label="Go to Experience page"
-        >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M20 7h-4V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zm-8 5h.01M10 7h4"/>
-            </svg>
+        <a href="{{ route('experience') }}" class="p-2.5 sm:p-3 text-slate-700 dark:text-slate-200 hover:text-[#4F5BFF] hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all" title="Experience" aria-label="Go to Experience page">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7h-4V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zm-8 5h.01M10 7h4"/></svg>
         </a>
 
-        <a
-            href="{{ route('about') }}"
-            class="p-2.5 sm:p-3 text-[#4F5BFF] bg-slate-100 dark:bg-slate-800 rounded-full transition-all"
-            title="About"
-            aria-label="Go to About page"
-            aria-current="page"
-        >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-            </svg>
+        <a href="{{ route('about') }}" class="p-2.5 sm:p-3 text-[#4F5BFF] bg-slate-100 dark:bg-slate-800 rounded-full transition-all" title="About" aria-label="Go to About page" aria-current="page">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
         </a>
 
-        <a
-            href="{{ route('projects') }}"
-            class="p-2.5 sm:p-3 text-slate-700 dark:text-slate-200 hover:text-[#4F5BFF] hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all"
-            title="Projects"
-            aria-label="Go to Projects page"
-        >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
-            </svg>
+        <a href="{{ route('projects') }}" class="p-2.5 sm:p-3 text-slate-700 dark:text-slate-200 hover:text-[#4F5BFF] hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all" title="Projects" aria-label="Go to Projects page">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-16zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6z"/></svg>
         </a>
 
-        <button
-            @click="contactModal = true"
-            class="p-2.5 sm:p-3 text-slate-700 dark:text-slate-200 hover:text-[#4F5BFF] hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all"
-            title="Contact"
-            aria-label="Open contact form"
-        >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
+        <button @click="contactModal = true" class="p-2.5 sm:p-3 text-slate-700 dark:text-slate-200 hover:text-[#4F5BFF] hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all" title="Contact" aria-label="Open contact form">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         </button>
     </nav>
 
