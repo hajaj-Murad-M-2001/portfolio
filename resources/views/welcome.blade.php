@@ -194,7 +194,7 @@
     </footer>
 
     <!-- Floating Navigation -->
-    <nav class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 bg-white/80 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200/80 dark:border-slate-700 px-2.5 sm:px-4 py-2.5 sm:py-3 rounded-full shadow-2xl flex items-center gap-1 sm:gap-4 max-w-[calc(100vw-24px)]" aria-label="Main navigation">
+    <nav class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 bg-white/90 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 px-2.5 sm:px-4 py-2.5 sm:py-3 rounded-full shadow-2xl flex items-center gap-1 sm:gap-4 max-w-[calc(100vw-24px)]" aria-label="Main navigation">
         <a
             href="{{ url('/') }}"
             class="p-2.5 sm:p-3 text-[#4F5BFF] bg-slate-100 dark:bg-slate-800 rounded-full transition-all"
