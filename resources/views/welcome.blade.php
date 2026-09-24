@@ -105,8 +105,8 @@
                 <span class="font-casual text-[#4F5BFF] text-2xl sm:text-3xl block -mb-5 sm:-mb-6 rotate-[-3deg]">This is</span>
 
                 <h1 class="font-heading text-5xl sm:text-6xl md:text-8xl uppercase tracking-tight leading-none text-slate-900 dark:text-white">
-                    <span>MURAD</span><br>
-                    <span>HAJJAJ</span>
+                <span>MURAD</span><br>
+                <span>HAJJAJ</span>
                 </h1>
 
                 <div class="space-y-2 pt-2">
