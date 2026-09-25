@@ -19,15 +19,13 @@
         };
 
         if (
-            localStorage.getItem('murad-theme') === 'dark' ||
+            localStorage.getItem('theme') === 'dark' ||
             (
-                !localStorage.getItem('murad-theme') &&
+                !localStorage.getItem('theme') &&
                 window.matchMedia('(prefers-color-scheme: dark)').matches
             )
         ) {
             document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
         }
     </script>
 
@@ -108,12 +106,31 @@
     x-data="{
         contactModal: false,
         activeTab: 'whatsapp',
-        dark: document.documentElement.classList.contains('dark'),
+        darkMode: false,
 
-        toggleTheme() {
-            this.dark = !this.dark;
-            document.documentElement.classList.toggle('dark', this.dark);
-            localStorage.setItem('murad-theme', this.dark ? 'dark' : 'light');
+        init() {
+            this.darkMode =
+                localStorage.getItem('theme') === 'dark' ||
+                (
+                    !localStorage.getItem('theme') &&
+                    window.matchMedia('(prefers-color-scheme: dark)').matches
+                );
+
+            this.applyTheme();
+
+            this.$watch('darkMode', () => {
+                this.applyTheme();
+            });
+        },
+
+        applyTheme() {
+            if (this.darkMode) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
         }
     }"
     @keydown.escape.window="contactModal = false"
@@ -145,7 +162,8 @@
             <!-- زر تبديل الدارك مود -->
             <button
                 type="button"
-                @click="toggleTheme()"
+                x-data="{ dark: document.documentElement.classList.contains('dark') }"
+                @click="dark = !dark; document.documentElement.classList.toggle('dark', dark); localStorage.setItem('murad-theme', dark ? 'dark' : 'light')"
                 class="theme-toggle w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-slate-700 dark:text-amber-300 hover:scale-105"
                 title="Toggle dark mode"
                 aria-label="Toggle dark mode"
@@ -187,6 +205,9 @@
                     full-stack web applications.
                 </p>
 
+                {{-- FIX (Backend touch): الأرقام الثلاثة صارت جاية من $stats
+                     يلي بيمررها AboutController بدل ما تكون أرقام ثابتة داخل
+                     الـ Blade مباشرة — نفس فكرة $experiences بصفحة Experience. --}}
                 <div class="mt-10 grid sm:grid-cols-3 gap-4">
 
                     <div class="rounded-2xl border border-black/5 dark:border-white/10 bg-white dark:bg-[#11151D] p-6">
@@ -491,7 +512,7 @@
             @if($errors->any())
                 <div class="bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 text-red-700 dark:text-red-400 text-xs font-medium p-3.5 rounded-2xl space-y-1">
 
-                    @foreach($errors->all() as$error)
+                    @foreach($errors->all() as $error)
                         <p class="flex items-center gap-2">
                             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -640,6 +661,8 @@
             </form>
 
         </div>
+
     </div>
+
 </body>
 </html>
