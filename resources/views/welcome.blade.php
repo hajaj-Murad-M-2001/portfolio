@@ -34,15 +34,18 @@
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         .theme-toggle { transition: transform .2s ease, background-color .25s ease, color .25s ease; }
         .theme-toggle:active { transform: scale(.94); }
-        
-        /* Dark Mode Global Overrides for Crisp White Text */
+
+        /*
+            FIX: removed the old blanket ".dark h1..h6 / .dark p,span,li,a" color rules.
+            They used a compound selector (".dark span" etc.) whose specificity is
+            actually HIGHER than a single Tailwind utility class like "text-[#4F5BFF]"
+            or "text-white", so in dark mode they were silently overriding intended
+            colors — e.g. the blue "This is" / tagline accents turned gray, and the
+            white "6+" number on the blue stat tile turned gray-on-blue.
+            Every element below already carries its own explicit dark: class, so we
+            only need the two safe, targeted overrides left here.
+        */
         .dark body { background: #0b1220 !important; color: #f3f4f6 !important; }
-        .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 { color: #ffffff !important; }
-        .dark p, .dark span, .dark li, .dark a { color: #d1d5db; }
-        .dark .dark-card { background: #111827 !important; border-color: #243244 !important; }
-        .dark .dark-soft { background: #0f172a !important; border-color: #243244 !important; }
-        .dark .dark-text { color: #ffffff !important; }
-        .dark .dark-muted { color: #94a3b8 !important; }
         .dark input, .dark textarea { color: #ffffff !important; background: #1e293b !important; border-color: #334155 !important; }
         .dark input::placeholder, .dark textarea::placeholder { color: #64748b !important; }
         [x-cloak] { display: none !important; }
@@ -363,7 +366,7 @@
             </div>
 
             <form @submit.prevent="submitForm" class="space-y-4" id="apiContactForm">
-                
+
                 <input type="text" name="website_url" id="website_url" style="display:none;" autocomplete="off">
 
                 <div>
@@ -437,7 +440,7 @@
 
                     <button
                         type="submit"
-                        x-show="activeTab: 'email'"
+                        x-show="activeTab === 'email'"
                         :disabled="loading"
                         class="w-full sm:flex-1 bg-[#4F5BFF] hover:bg-[#3d48e0] text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-lg shadow-[#4F5BFF]/25 text-xs flex items-center justify-center gap-2"
                     >

@@ -33,15 +33,12 @@
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         .theme-toggle { transition: transform .2s ease, background-color .25s ease, color .25s ease; }
         .theme-toggle:active { transform: scale(.94); }
-        
-        /* Dark Mode Global Overrides for Crisp White Text */
+
+        /* FIX: same issue as Home — ".dark span/a" etc. has higher CSS specificity
+           than a single Tailwind utility class, so it was silently turning the blue
+           "View Case Study" / "GitHub" links and the blue filter badges gray in dark
+           mode. Removed; every element already carries its own explicit dark: class. */
         .dark body { background: #0b1220 !important; color: #f3f4f6 !important; }
-        .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 { color: #ffffff !important; }
-        .dark p, .dark span, .dark li, .dark a { color: #d1d5db; }
-        .dark .dark-card { background: #111827 !important; border-color: #243244 !important; }
-        .dark .dark-soft { background: #0f172a !important; border-color: #243244 !important; }
-        .dark .dark-text { color: #ffffff !important; }
-        .dark .dark-muted { color: #94a3b8 !important; }
         .dark input, .dark textarea { color: #ffffff !important; background: #1e293b !important; border-color: #334155 !important; }
         .dark input::placeholder, .dark textarea::placeholder { color: #64748b !important; }
         [x-cloak] { display: none !important; }
@@ -77,7 +74,6 @@
                 Available for new projects
             </div>
 
-            <!-- زر تبديل الدارك مود -->
             <button
                 type="button"
                 x-data="{ dark: document.documentElement.classList.contains('dark') }"
@@ -105,15 +101,16 @@
 
         <!-- Page Title & Description -->
         <div class="space-y-3">
-            <h1 class="font-heading text-4xl md:text-5xl uppercase tracking-tight text-slate-900 dark:text-white">Projects I&rsquo;v Built</h1>
+            <h1 class="font-heading text-4xl md:text-5xl uppercase tracking-tight text-slate-900 dark:text-white">Projects I&rsquo;ve Built</h1>
             <p class="text-slate-500 dark:text-slate-400 max-w-xl text-sm leading-relaxed">
                 A selection of backend and full-stack projects focused on clean architecture, reliable APIs, and practical solutions.
             </p>
         </div>
 
-        <!-- Filters -->
+        <!-- Filters: "Node.js" removed — no project is tagged with it yet, and an
+             always-empty filter option looks like a broken feature to a visitor. -->
         <div class="flex flex-wrap items-center gap-2 pt-2" role="group" aria-label="Filter projects by technology">
-            <template x-for="filter in ['All', 'Backend', 'Full-Stack', 'Laravel', 'Node.js']">
+            <template x-for="filter in ['All', 'Backend', 'Full-Stack', 'Laravel']">
                 <button @click="activeFilter = filter"
                         :class="activeFilter === filter ? 'bg-[#4F5BFF] text-white shadow-md shadow-[#4F5BFF]/20' : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800'"
                         :aria-pressed="activeFilter === filter"
@@ -187,12 +184,16 @@
                         <span class="bg-slate-100 dark:bg-slate-800 dark:text-slate-200 text-slate-700 text-[11px] px-2.5 py-1 rounded-md font-medium">MySQL</span>
                     </div>
                 </div>
-                <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
                     <a href="https://mostaql.com/portfolio/3364761-%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D9%85%D9%86%D8%B5%D8%A9-e-restaurant-%D9%85%D8%AA%D9%83%D8%A7%D9%85%D9%84%D8%A9-%D8%A8%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%85%D8%B3%D8%AA%D8%AE%D8%AF%D9%85-%D9%81%D8%A7%D8%A6%D9%82%D8%A9-uxui-------" target="_blank" class="text-[#4F5BFF] hover:text-[#3d48e0] text-sm font-bold inline-flex items-center gap-1">
                         View Case Study &rarr;
                     </a>
                     <a href="https://mostaql.com/portfolio/3364761-%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D9%85%D9%86%D8%B5%D8%A9-e-restaurant-%D9%85%D8%AA%D9%83%D8%A7%D9%85%D9%84%D8%A9-%D8%A8%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%85%D8%B3%D8%AA%D8%AE%D8%AF%D9%85-%D9%81%D8%A7%D8%A6%D9%82%D8%A9-uxui-------" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
                         Live Demo ↗
+                    </a>
+                    {{-- TODO: replace with this project's actual repo link --}}
+                    <a href="https://github.com/hajaj-Murad-M-2001/TODO-e-restaurant-repo" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
+                        GitHub ↗
                     </a>
                 </div>
             </div>
@@ -218,12 +219,16 @@
                         <span class="bg-slate-100 dark:bg-slate-800 dark:text-slate-200 text-slate-700 text-[11px] px-2.5 py-1 rounded-md font-medium">Tailwind CSS</span>
                     </div>
                 </div>
-                <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
                     <a href="https://mostaql.com/portfolio/3347152-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D9%88%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D9%85%D9%88%D9%82%D8%B9-%D8%B4%D8%B1%D9%83%D8%A9-%D8%AE%D8%AF%D9%85%D8%A7%D8%AA-%D9%82%D8%A7%D9%86%D9%88%D9%86%D9%8A%D8%A9-lawtech-------" target="_blank" class="text-[#4F5BFF] hover:text-[#3d48e0] text-sm font-bold inline-flex items-center gap-1">
                         View Case Study &rarr;
                     </a>
                     <a href="https://mostaql.com/portfolio/3347152-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D9%88%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D9%85%D9%88%D9%82%D8%B9-%D8%B4%D8%B1%D9%83%D8%A9-%D8%AE%D8%AF%D9%85%D8%A7%D8%AA-%D9%82%D8%A7%D9%86%D9%88%D9%86%D9%8A%D8%A9-lawtech-------" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
                         Live Demo ↗
+                    </a>
+                    {{-- TODO: replace with this project's actual repo link --}}
+                    <a href="https://github.com/hajaj-Murad-M-2001/TODO-lawtech-repo" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
+                        GitHub ↗
                     </a>
                 </div>
             </div>
@@ -249,12 +254,16 @@
                         <span class="bg-slate-100 dark:bg-slate-800 dark:text-slate-200 text-slate-700 text-[11px] px-2.5 py-1 rounded-md font-medium">JavaScript</span>
                     </div>
                 </div>
-                <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
                     <a href="https://mostaql.com/portfolio/3319201-responsive-landing-page-main----" target="_blank" class="text-[#4F5BFF] hover:text-[#3d48e0] text-sm font-bold inline-flex items-center gap-1">
                         View Case Study &rarr;
                     </a>
                     <a href="https://mostaql.com/portfolio/3319201-responsive-landing-page-main----" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
                         Live Demo ↗
+                    </a>
+                    {{-- TODO: replace with this project's actual repo link --}}
+                    <a href="https://github.com/hajaj-Murad-M-2001/TODO-landing-page-repo" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
+                        GitHub ↗
                     </a>
                 </div>
             </div>
@@ -280,25 +289,20 @@
                         <span class="bg-slate-100 dark:bg-slate-800 dark:text-slate-200 text-slate-700 text-[11px] px-2.5 py-1 rounded-md font-medium">MySQL</span>
                     </div>
                 </div>
-                <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
                     <a href="https://mostaql.com/portfolio/3311927-%D8%A8%D8%B1%D9%85%D8%AC%D8%A9-%D9%88%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D9%88%D8%A7%D8%AC%D9%87%D8%A7%D8%AA-%D9%85%D8%B3%D8%AA%D8%AE%D8%AF%D9%85-%D9%84%D9%85%D9%88%D9%82%D8%B9-%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A-----" target="_blank" class="text-[#4F5BFF] hover:text-[#3d48e0] text-sm font-bold inline-flex items-center gap-1">
                         View Case Study &rarr;
                     </a>
                     <a href="https://mostaql.com/portfolio/3311927-%D8%A8%D8%B1%D9%85%D8%AC%D8%A9-%D9%88%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D9%88%D8%A7%D8%AC%D9%87%D8%A7%D8%AA-%D9%85%D8%B3%D8%AA%D8%AE%D8%AF%D9%85-%D9%84%D9%85%D9%88%D9%82%D8%B9-%D8%AA%D8%B9%D9%84%D9%8a%D9%85%D9%8A-----" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
                         Live Demo ↗
                     </a>
+                    {{-- TODO: replace with this project's actual repo link --}}
+                    <a href="https://github.com/hajaj-Murad-M-2001/TODO-educational-website-repo" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
+                        GitHub ↗
+                    </a>
                 </div>
             </div>
 
-        </div>
-
-        <!-- Empty state -->
-        <div
-            x-show="!(activeFilter === 'All' || activeFilter === 'Backend' || activeFilter === 'Laravel' || activeFilter === 'Full-Stack')"
-            x-transition
-            class="text-center py-12 text-slate-400 dark:text-slate-500 text-sm"
-        >
-            No projects tagged <span x-text="activeFilter" class="font-semibold"></span> yet — check back soon.
         </div>
 
         <!-- CTA -->
