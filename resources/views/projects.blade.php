@@ -147,19 +147,19 @@
                 </div>
             </div>
 
-            <div class="pt-8 mt-8 border-t border-slate-200/60 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
-                <div class="flex items-center gap-4">
-                    <a href="https://github.com/hajaj-Murad-M-2001/clean-blog" target="_blank" class="text-[#4F5BFF] hover:text-[#3d48e0] text-sm font-bold inline-flex items-center gap-1">
-                        View Case Study &rarr;
-                    </a>
-                    <a href="https://github.com/hajaj-Murad-M-2001/clean-blog" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
-                        Live Demo ↗
-                    </a>
-                </div>
-                <a href="https://github.com/hajaj-Murad-M-2001/clean-blog" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
-                    GitHub ↗
-                </a>
-            </div>
+           <div class="pt-8 mt-8 border-t border-slate-200/60 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
+    <div class="flex items-center gap-4">
+        <a href="https://mostaql.com/portfolio/3793451-%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D9%88%D8%AA%D8%A3%D9%85%D9%8A%D9%86-%D9%86%D8%B8%D8%A7%D9%85-%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D9%85%D8%AD%D8%AA%D9%88%D9%89-%D9%85%D8%AA%D9%83%D8%A7%D9%85%D9%84-clean-blog-cms-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-laravel" target="_blank" rel="noopener noreferrer" class="text-[#4F5BFF] hover:text-[#3d48e0] text-sm font-bold inline-flex items-center gap-1">
+            View Case Study &rarr;
+        </a>
+        <a href="https://mostaql.com/portfolio/3793451-%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D9%88%D8%AA%D8%A3%D9%85%D9%8A%D9%86-%D9%86%D8%B8%D8%A7%D9%85-%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D9%85%D8%AD%D8%AA%D9%88%D9%89-%D9%85%D8%AA%D9%83%D8%A7%D9%85%D9%84-clean-blog-cms-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-laravel" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
+            Live Demo ↗
+        </a>
+    </div>
+    <a href="https://github.com/hajaj-Murad-M-2001/clean-blog" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
+        GitHub ↗
+    </a>
+</div>
         </div>
 
         <!-- Projects Grid -->
