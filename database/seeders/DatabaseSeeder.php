@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Project;
 use App\Models\Skill;
+use App\Models\Experience;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,8 +17,14 @@ class DatabaseSeeder extends Seeder
         // تفريغ البيانات القديمة لتجنب التكرار
         Project::truncate();
         Skill::truncate();
+        Experience::truncate();
 
-        // إضافية مشاريعك الحقيقية من معرض الأعمال
+        // استدعاء ملف ExperienceSeeder لتعبئة جدول الخبرات
+        $this->call([
+            ExperienceSeeder::class,
+        ]);
+
+        // إضافة مشاريعك الحقيقية
         $projects = [
             [
                 'title' => 'تطوير وتأمين نظام إدارة محتوى متكامل (Clean Blog CMS)',
