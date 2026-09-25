@@ -10,6 +10,6 @@ class ExperienceController extends Controller
     {
         $experiences = Experience::ordered()->get();
 
-        return view('experience', compact('experiences'));
+        return view('Experience', compact('experiences'));
     }
 }
