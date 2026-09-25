@@ -14,20 +14,15 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Murad-Mohd💻</text></svg>">
 
     <script>
-        tailwind.config = {
-            darkMode: 'class'
-        };
-
-        if (
-            localStorage.getItem('theme') === 'dark' ||
-            (
-                !localStorage.getItem('theme') &&
-                window.matchMedia('(prefers-color-scheme: dark)').matches
-            )
-        ) {
-            document.documentElement.classList.add('dark');
-        }
-    </script>
+    // Persist dark mode and respect the visitor's system preference on first load.
+    tailwind = window.tailwind || {};
+    tailwind.config = { darkMode: 'class' };
+    (() => {
+        const saved = localStorage.getItem('murad-theme');
+        const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+    })();
+</script>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -161,13 +156,20 @@
 
             <!-- زر تبديل الدارك مود -->
             <button
-                type="button"
-                x-data="{ dark: document.documentElement.classList.contains('dark') }"
-                @click="dark = !dark; document.documentElement.classList.toggle('dark', dark); localStorage.setItem('murad-theme', dark ? 'dark' : 'light')"
-                class="theme-toggle w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-slate-700 dark:text-amber-300 hover:scale-105"
-                title="Toggle dark mode"
-                aria-label="Toggle dark mode"
-            >
+    type="button"
+    x-data="{ dark: document.documentElement.classList.contains('dark') }"
+    @click="dark = !dark; document.documentElement.classList.toggle('dark', dark); localStorage.setItem('murad-theme', dark ? 'dark' : 'light')"
+    class="theme-toggle w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-slate-700 dark:text-amber-300 hover:scale-105"
+    title="Toggle dark mode"
+    aria-label="Toggle dark mode"
+>
+    <svg x-show="!dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 16a4 4 0 100-8 4 4 0 000 8z"/>
+    </svg>
+    <svg x-show="dark" x-cloak class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+    </svg>
+</button>
                 <svg x-show="!dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 16a4 4 0 100-8 4 4 0 000 8z"/>
                 </svg>
@@ -201,12 +203,6 @@
             </p>
         </div>
 
-        {{--
-            FIX (Backend): البطاقات الستة صارت جاية من قاعدة البيانات عبر
-            $experiences (Experience::ordered()->get() من ExperienceController)
-            بدل ما تكون مكتوبة يدوياً بالـ HTML. إضافة خبرة جديدة هلأ = صف
-            جديد بالجدول، مش تعديل كود.
-        --}}
         <section id="experience" class="relative">
 
             <div
