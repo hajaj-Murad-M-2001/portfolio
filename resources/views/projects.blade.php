@@ -264,7 +264,7 @@
                         Live Demo ↗
                     </a>
                     {{-- TODO: replace with this project's actual repo link --}}
-                    <a href="https://github.com/hajaj-Murad-M-2001/TODO-landing-page-repo" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
+                    <a href="https://github.com/hajaj-Murad-M-2001" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
                         GitHub ↗
                     </a>
                 </div>

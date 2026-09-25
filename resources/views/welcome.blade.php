@@ -9,7 +9,7 @@
     <meta property="og:description" content="Full-Stack & Laravel Developer building scalable backend systems, RESTful APIs, and reliable web applications.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ asset('Murad3.jpg') }}">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Murad-Mohd💻</text></svg>">
 
     <script>
         // Persist dark mode and respect the visitor's system preference on first load.
