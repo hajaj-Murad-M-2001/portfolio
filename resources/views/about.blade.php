@@ -11,7 +11,7 @@
     <meta property="og:description" content="Backend engineer specializing in scalable systems, RESTful APIs, and full-stack web apps.">
     <meta property="og:type" content="website">
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Murad-mohd💻</text></svg>">
 
     <script>
         tailwind.config = {
@@ -19,13 +19,15 @@
         };
 
         if (
-            localStorage.getItem('theme') === 'dark' ||
+            localStorage.getItem('murad-theme') === 'dark' ||
             (
-                !localStorage.getItem('theme') &&
+                !localStorage.getItem('murad-theme') &&
                 window.matchMedia('(prefers-color-scheme: dark)').matches
             )
         ) {
             document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
     </script>
 
@@ -106,31 +108,12 @@
     x-data="{
         contactModal: false,
         activeTab: 'whatsapp',
-        darkMode: false,
+        dark: document.documentElement.classList.contains('dark'),
 
-        init() {
-            this.darkMode =
-                localStorage.getItem('theme') === 'dark' ||
-                (
-                    !localStorage.getItem('theme') &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches
-                );
-
-            this.applyTheme();
-
-            this.$watch('darkMode', () => {
-                this.applyTheme();
-            });
-        },
-
-        applyTheme() {
-            if (this.darkMode) {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            }
+        toggleTheme() {
+            this.dark = !this.dark;
+            document.documentElement.classList.toggle('dark', this.dark);
+            localStorage.setItem('murad-theme', this.dark ? 'dark' : 'light');
         }
     }"
     @keydown.escape.window="contactModal = false"
@@ -162,8 +145,7 @@
             <!-- زر تبديل الدارك مود -->
             <button
                 type="button"
-                x-data="{ dark: document.documentElement.classList.contains('dark') }"
-                @click="dark = !dark; document.documentElement.classList.toggle('dark', dark); localStorage.setItem('murad-theme', dark ? 'dark' : 'light')"
+                @click="toggleTheme()"
                 class="theme-toggle w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-slate-700 dark:text-amber-300 hover:scale-105"
                 title="Toggle dark mode"
                 aria-label="Toggle dark mode"
@@ -205,9 +187,6 @@
                     full-stack web applications.
                 </p>
 
-                {{-- FIX (Backend touch): الأرقام الثلاثة صارت جاية من $stats
-                     يلي بيمررها AboutController بدل ما تكون أرقام ثابتة داخل
-                     الـ Blade مباشرة — نفس فكرة $experiences بصفحة Experience. --}}
                 <div class="mt-10 grid sm:grid-cols-3 gap-4">
 
                     <div class="rounded-2xl border border-black/5 dark:border-white/10 bg-white dark:bg-[#11151D] p-6">
@@ -383,13 +362,6 @@
         </section>
 
     </main>
-
-    {{-- ============================================================
-         FIX: الـ Dock رجع لنفس شكل Home/Experience/Projects بالضبط —
-         نفس الـ pill الدائري، نفس أيقونات SVG (بيت/شنطة/دائرة-شخص/شبكة)،
-         نفس aria-label/aria-current، وزر الدارك مود بنفس مكانه بباقي
-         الصفحات (جوا الـ Dock، مش هيدر منفصل).
-         ============================================================ --}}
     <nav
         class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-white/80 dark:bg-[#11151D]/90 backdrop-blur-md border border-slate-200/80 dark:border-white/10 px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 sm:gap-4"
         aria-label="Main navigation"
@@ -459,74 +431,7 @@
                 />
             </svg>
         </a>
-
-        <button
-            type="button"
-            @click="darkMode = !darkMode"
-            class="p-3 text-slate-600 dark:text-slate-300 hover:text-[#4F5BFF] hover:bg-slate-100 dark:hover:bg-white/10 rounded-full transition-all"
-            title="Toggle dark mode"
-            aria-label="Toggle dark mode"
-        >
-            <svg
-                x-show="!darkMode"
-                x-cloak
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 3v2m0 14v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M3 12h2m14 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                />
-            </svg>
-
-            <svg
-                x-show="darkMode"
-                x-cloak
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
-                />
-            </svg>
-        </button>
-
-        <button
-            @click="contactModal = true"
-            class="p-3 text-slate-600 dark:text-slate-300 hover:text-[#4F5BFF] hover:bg-slate-100 dark:hover:bg-white/10 rounded-full transition-all"
-            title="Contact"
-            aria-label="Open contact form"
-        >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-            </svg>
-        </button>
-
     </nav>
-
-    {{-- ============================================================
-         FIX: مودال التواصل رجع لنفس بنية Experience/Projects
-         (route('contact.store') + @csrf + old() + session/errors)
-         بدل الفورم المنفصلة (JS منفصل sendWhatsApp() + رقم واتساب
-         placeholder "970XXXXXXXXX" مش شغال). رقم الواتساب هلأ
-         972595321243 نفسه المستخدم بكل صفحة تانية.
-         ============================================================ --}}
     <div
         x-show="contactModal"
         x-transition:enter="transition ease-out duration-300"
@@ -586,7 +491,7 @@
             @if($errors->any())
                 <div class="bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 text-red-700 dark:text-red-400 text-xs font-medium p-3.5 rounded-2xl space-y-1">
 
-                    @foreach($errors->all() as $error)
+                    @foreach($errors->all() as$error)
                         <p class="flex items-center gap-2">
                             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -735,8 +640,6 @@
             </form>
 
         </div>
-
     </div>
-
 </body>
 </html>

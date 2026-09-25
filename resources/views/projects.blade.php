@@ -8,7 +8,7 @@
     <meta property="og:title" content="Projects | Murad Hajjaj">
     <meta property="og:description" content="A selection of backend and full-stack projects built with Laravel, PHP, and modern web technologies.">
     <meta property="og:type" content="website">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Murad-Mohd💻</text></svg>">
 
     <script>
         // Persist dark mode and respect the visitor's system preference on first load.
