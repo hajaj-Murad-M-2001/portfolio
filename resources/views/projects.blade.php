@@ -149,14 +149,14 @@
 
             <div class="pt-8 mt-8 border-t border-slate-200/60 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
                 <div class="flex items-center gap-4">
-                    <a href="https://github.com/hajaj-Murad-M-2001/clean-blog-----" target="_blank" class="text-[#4F5BFF] hover:text-[#3d48e0] text-sm font-bold inline-flex items-center gap-1">
+                    <a href="https://github.com/hajaj-Murad-M-2001/clean-blog" target="_blank" class="text-[#4F5BFF] hover:text-[#3d48e0] text-sm font-bold inline-flex items-center gap-1">
                         View Case Study &rarr;
                     </a>
-                    <a href="https://github.com/hajaj-Murad-M-2001/clean-blog-----" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
+                    <a href="https://github.com/hajaj-Murad-M-2001/clean-blog" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
                         Live Demo ↗
                     </a>
                 </div>
-                <a href="https://github.com/hajaj-Murad-M-2001/clean-blog-----" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
+                <a href="https://github.com/hajaj-Murad-M-2001/clean-blog" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-[#4F5BFF] text-sm font-bold inline-flex items-center gap-1">
                     GitHub ↗
                 </a>
             </div>
