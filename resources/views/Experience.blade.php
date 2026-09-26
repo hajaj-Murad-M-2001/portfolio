@@ -69,6 +69,12 @@
             transition-timing-function: ease;
         }
 
+        .theme-toggle { transition: transform .2s ease, background-color .25s ease, color .25s ease; }
+        .theme-toggle:active { transform: scale(.94); }
+        .dark body { background: #0b1220 !important; color: #f3f4f6 !important; }
+        .dark input, .dark textarea { color: #ffffff !important; background: #1e293b !important; border-color: #334155 !important; }
+        .dark input::placeholder, .dark textarea::placeholder { color: #64748b !important; }
+
         [x-cloak] {
             display: none !important;
         }
@@ -98,36 +104,7 @@
 
 <body
     class="bg-[#F4F5FA] dark:bg-[#090B10] text-[#0F1115] dark:text-slate-100 antialiased selection:bg-[#4F5BFF] selection:text-white"
-    x-data="{
-        contactModal: false,
-        activeTab: 'whatsapp',
-        darkMode: false,
-
-        init() {
-            this.darkMode =
-                localStorage.getItem('theme') === 'dark' ||
-                (
-                    !localStorage.getItem('theme') &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches
-                );
-
-            this.applyTheme();
-
-            this.$watch('darkMode', () => {
-                this.applyTheme();
-            });
-        },
-
-        applyTheme() {
-            if (this.darkMode) {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            }
-        }
-    }"
+    x-data="{ contactModal: false, activeTab: 'whatsapp' }"
     @keydown.escape.window="contactModal = false"
 >
 
@@ -156,27 +133,17 @@
 
             <!-- زر تبديل الدارك مود -->
             <button
-    type="button"
-    x-data="{ dark: document.documentElement.classList.contains('dark') }"
-    @click="dark = !dark; document.documentElement.classList.toggle('dark', dark); localStorage.setItem('murad-theme', dark ? 'dark' : 'light')"
-    class="theme-toggle w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-slate-700 dark:text-amber-300 hover:scale-105"
-    title="Toggle dark mode"
-    aria-label="Toggle dark mode"
->
-    <svg x-show="!dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 16a4 4 0 100-8 4 4 0 000 8z"/>
-    </svg>
-    <svg x-show="dark" x-cloak class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-    </svg>
-</button>
-                <svg x-show="!dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 16a4 4 0 100-8 4 4 0 000 8z"/>
-                </svg>
-                <svg x-show="dark" x-cloak class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-                </svg>
+                type="button"
+                x-data="{ dark: document.documentElement.classList.contains('dark') }"
+                @click="dark = !dark; document.documentElement.classList.toggle('dark', dark); localStorage.setItem('murad-theme', dark ? 'dark' : 'light')"
+                class="theme-toggle w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-slate-700 dark:text-amber-300 hover:scale-105"
+                title="Toggle dark mode"
+                aria-label="Toggle dark mode"
+            >
+                <svg x-show="!dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 16a4 4 0 100-8 4 4 0 000 8z"/></svg>
+                <svg x-show="dark" x-cloak class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
             </button>
+
         </div>
     </header>
 
