@@ -14,15 +14,15 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Murad-Mohd💻</text></svg>">
 
     <script>
-        // Persist dark mode and respect the visitor's system preference on first load.
-        tailwind = window.tailwind || {};
-        tailwind.config = { darkMode: 'class' };
-        (() => {
-            const saved = localStorage.getItem('murad-theme');
-            const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (dark) document.documentElement.classList.add('dark');
-        })();
-    </script>
+    // Persist dark mode and respect the visitor's system preference on first load.
+    tailwind = window.tailwind || {};
+    tailwind.config = { darkMode: 'class' };
+    (() => {
+        const saved = localStorage.getItem('murad-theme');
+        const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+    })();
+</script>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -105,9 +105,9 @@
 
         init() {
             this.darkMode =
-                localStorage.getItem('murad-theme') === 'dark' ||
+                localStorage.getItem('theme') === 'dark' ||
                 (
-                    !localStorage.getItem('murad-theme') &&
+                    !localStorage.getItem('theme') &&
                     window.matchMedia('(prefers-color-scheme: dark)').matches
                 );
 
@@ -121,10 +121,10 @@
         applyTheme() {
             if (this.darkMode) {
                 document.documentElement.classList.add('dark');
-                localStorage.setItem('murad-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
             } else {
                 document.documentElement.classList.remove('dark');
-                localStorage.setItem('murad-theme', 'light');
+                localStorage.setItem('theme', 'light');
             }
         }
     }"
@@ -154,17 +154,26 @@
                 Available for new projects
             </div>
 
+            <!-- زر تبديل الدارك مود -->
             <button
-                type="button"
-                @click="darkMode = !darkMode"
-                class="theme-toggle w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-slate-700 dark:text-amber-300 hover:scale-105"
-                title="Toggle dark mode"
-                aria-label="Toggle dark mode"
-            >
-                <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    type="button"
+    x-data="{ dark: document.documentElement.classList.contains('dark') }"
+    @click="dark = !dark; document.documentElement.classList.toggle('dark', dark); localStorage.setItem('murad-theme', dark ? 'dark' : 'light')"
+    class="theme-toggle w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-slate-700 dark:text-amber-300 hover:scale-105"
+    title="Toggle dark mode"
+    aria-label="Toggle dark mode"
+>
+    <svg x-show="!dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 16a4 4 0 100-8 4 4 0 000 8z"/>
+    </svg>
+    <svg x-show="dark" x-cloak class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+    </svg>
+</button>
+                <svg x-show="!dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 16a4 4 0 100-8 4 4 0 000 8z"/>
                 </svg>
-                <svg x-show="darkMode" x-cloak class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg x-show="dark" x-cloak class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
                 </svg>
             </button>
@@ -203,7 +212,7 @@
 
             <div class="space-y-6">
 
-                @forelse($experiences as$experience)
+                @forelse($experiences as $experience)
                     <article class="relative md:pl-16">
 
                         @if($experience->is_featured)
@@ -264,7 +273,7 @@
 
                             @if(!empty($experience->tags))
                                 <div class="flex flex-wrap gap-2 mt-5">
-                                    @foreach($experience->tags as$tag)
+                                    @foreach($experience->tags as $tag)
                                         <span class="bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-200 text-xs px-3 py-1.5 rounded-lg font-medium">
                                             {{ $tag }}
                                         </span>
@@ -432,7 +441,7 @@
             @if($errors->any())
                 <div class="bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 text-red-700 dark:text-red-400 text-xs font-medium p-3.5 rounded-2xl space-y-1">
 
-                    @foreach($errors->all() as$error)
+                    @foreach($errors->all() as $error)
                         <p class="flex items-center gap-2">
                             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -512,7 +521,7 @@
 
                     <div class="flex items-stretch bg-[#F4F5FA] dark:bg-[#0D1017] border border-slate-200 dark:border-white/10 rounded-2xl overflow-hidden focus-within:border-[#4F5BFF]">
 
-                        <span class="px-3 flex items-center text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-white/5 border-r border-slate-200 dark:border-white/10">
+                        <span class="px-3 flex items-center text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-white/5 border-l border-slate-200 dark:border-white/10">
                             +972
                         </span>
 
@@ -567,6 +576,18 @@
                     >
                         Send Email
                     </button>
+
+                    <a
+    href="{{ url('cv/murad-hajjaj-cv.pdf') }}"
+    download="Murad_Hajjaj_CV.pdf"
+    target="_blank"
+    class="w-full sm:w-auto bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold py-3.5 px-6 rounded-2xl transition-all text-xs text-center inline-flex items-center justify-center gap-2"
+>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+    </svg>
+    Download CV
+</a>
 
                 </div>
 
