@@ -13,18 +13,15 @@
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Murad-Mohd💻</text></svg>">
 
-    <script>
-        // Persist dark mode and respect the visitor's system preference on first load.
-        tailwind = window.tailwind || {};
-        tailwind.config = { darkMode: 'class' };
-        (() => {
-            const saved = localStorage.getItem('murad-theme');
-            const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (dark) document.documentElement.classList.add('dark');
-        })();
-    </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' };
+        if (localStorage.getItem('murad-theme') === 'dark' || (!('murad-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
@@ -101,31 +98,18 @@
     x-data="{
         contactModal: false,
         activeTab: 'whatsapp',
-        darkMode: false,
+        darkMode: document.documentElement.classList.contains('dark'),
 
         init() {
-            this.darkMode =
-                localStorage.getItem('murad-theme') === 'dark' ||
-                (
-                    !localStorage.getItem('murad-theme') &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches
-                );
-
-            this.applyTheme();
-
-            this.$watch('darkMode', () => {
-                this.applyTheme();
+            this.$watch('darkMode', val => {
+                if (val) {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('murad-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('murad-theme', 'light');
+                }
             });
-        },
-
-        applyTheme() {
-            if (this.darkMode) {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('murad-theme', 'dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('murad-theme', 'light');
-            }
         }
     }"
     @keydown.escape.window="contactModal = false"
