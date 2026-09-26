@@ -17,8 +17,8 @@
     // Persist dark mode and respect the visitor's system preference on first load.
     // NOTE: uses the SAME localStorage key ("theme") as the Alpine state below,
     // so there is a single source of truth and no flash/desync on reload.
-    tailwind = window.tailwind || {};
-    tailwind.config = { darkMode: 'class' };
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = { darkMode: 'class' };
     (() => {
         const saved = localStorage.getItem('theme');
         const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
