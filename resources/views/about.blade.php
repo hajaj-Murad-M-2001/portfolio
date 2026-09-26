@@ -6,7 +6,7 @@
 
     <title>About Me | Murad Hajjaj</title>
 
-    <meta name="description" content="Murad Hajjaj — a software and computer engineer based in Nablus, specializing in backend systems, RESTful APIs, and full-stack web apps using Laravel, Node.js, and Express.js.">
+    <meta name="description" content="Murad Hajjaj — a software and computer engineer based in Nablus, specializing in backend systems, RESTful APIs, and full-stack web apps using Laravel, Node.js, and .">
     <meta property="og:title" content="About Me | Murad Hajjaj">
     <meta property="og:description" content="Backend engineer specializing in scalable systems, RESTful APIs, and full-stack web apps.">
     <meta property="og:type" content="website">
