@@ -13,20 +13,9 @@
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Murad-mohd💻</text></svg>">
 
-    <script>
-    // Persist dark mode and respect the visitor's system preference on first load.
-    // NOTE: uses the SAME localStorage key ("theme") as the Alpine state below,
-    // so there is a single source of truth and no flash/desync on reload.
-    window.tailwind = window.tailwind || {};
-    window.tailwind.config = { darkMode: 'class' };
-    (() => {
-        const saved = localStorage.getItem('theme');
-        const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (dark) document.documentElement.classList.add('dark');
-    })();
-</script>
+    
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    
 
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
@@ -96,40 +85,37 @@
             background: #4F5BFF;
         }
     </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: "class" };
+        if (localStorage.getItem("murad-theme") === "dark" || (!("murad-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    </script>
 </head>
 
 <body
     class="bg-[#F4F5FA] dark:bg-[#090B10] text-[#0F1115] dark:text-slate-100 antialiased selection:bg-[#4F5BFF] selection:text-white"
     x-data="{
-        contactModal: false,
-        activeTab: 'whatsapp',
-        darkMode: document.documentElement.classList.contains('dark'),
+    contactModal: false,
+    activeTab: 'whatsapp',
+    darkMode: document.documentElement.classList.contains('dark'),
 
-        init() {
-            this.darkMode =
-                localStorage.getItem('theme') === 'dark' ||
-                (
-                    !localStorage.getItem('theme') &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches
-                );
-
-            this.applyTheme();
-
-            this.$watch('darkMode', () => {
-                this.applyTheme();
-            });
-        },
-
-        applyTheme() {
-            if (this.darkMode) {
+    init() {
+        this.$watch('darkMode', val => {
+            if (val) {
                 document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
+                localStorage.setItem('murad-theme', 'dark');
             } else {
                 document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
+                localStorage.setItem('murad-theme', 'light');
             }
-        }
-    }"
+        });
+    }
+}"
     @keydown.escape.window="contactModal = false"
 >
 
