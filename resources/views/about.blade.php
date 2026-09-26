@@ -103,7 +103,7 @@
     x-data="{
         contactModal: false,
         activeTab: 'whatsapp',
-        darkMode: false,
+        darkMode: document.documentElement.classList.contains('dark'),
 
         init() {
             this.darkMode =
