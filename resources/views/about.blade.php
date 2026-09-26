@@ -270,7 +270,7 @@
 
                         <div class="pl-5">
                             stack:
-                            <span class="text-amber-300">'Laravel + Node.js'</span>,
+                            <span class="text-amber-300">'Laravel + REST APIs'</span>,
                         </div>
 
                         <div class="pl-5">
