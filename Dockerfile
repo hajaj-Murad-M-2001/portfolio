@@ -30,10 +30,13 @@ COPY . /var/www
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Set permissions
-RUN chown -R www-data:data /var/www/storage /var/www/bootstrap/cache || true
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache || true
+
+# Give execution permission to entrypoint script
+RUN chmod +x /var/www/entrypoint.sh
 
 # Expose port 10000 for Render
 EXPOSE 10000
 
-# Start PHP built-in server pointing to the public directory
-CMD ["php", "-S", "0.0.0.0:10000", "-t", "public"]
+# Set entrypoint to run migrations and start server
+ENTRYPOINT ["/var/www/entrypoint.sh"]
