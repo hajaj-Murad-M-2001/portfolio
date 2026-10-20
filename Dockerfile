@@ -1,4 +1,5 @@
 FROM php:8.3-fpm
+
 # Install system dependencies and PostgreSQL extensions
 RUN apt-get update && apt-get install -y \
     git \
@@ -13,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install PHP extensions including pdo_pgsql and pgsql
+# Install PHP extensions including pdo_pgsql, pgsql, and gd
 RUN docker-php-ext-install pdo_pgsql pgsql mbstring exif pcntl bcmath gd
 
 # Get latest Composer
@@ -29,7 +30,10 @@ COPY . /var/www
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+RUN chown -R www-data:data /var/www/storage /var/www/bootstrap/cache || true
 
-EXPOSE 9000
-CMD ["php-fpm"]
+# Expose port 10000 for Render
+EXPOSE 10000
+
+# Start PHP built-in server pointing to the public directory
+CMD ["php", "-S", "0.0.0.0:10000", "-t", "public"]
