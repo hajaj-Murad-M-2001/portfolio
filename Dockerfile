@@ -38,5 +38,5 @@ RUN chmod +x /var/www/entrypoint.sh
 # Expose port 10000 for Render
 EXPOSE 10000
 
-# Set entrypoint to run migrations and start server
-ENTRYPOINT ["/var/www/entrypoint.sh"]
+# Set entrypoint to run migrations and start server using /bin/sh
+ENTRYPOINT ["/bin/sh", "/var/www/entrypoint.sh"]
